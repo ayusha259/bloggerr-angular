@@ -1,8 +1,8 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Blog } from '../../blog.model';
-import { BlogService } from '../../blogs.service';
+import { Blog } from '../../blogs/blog.model';
+import { BlogService } from '../../blogs/blogs.service';
 
 @Component({
   selector: 'app-user-blogs',

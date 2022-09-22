@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="!loading; else loadingSpinner" class="col-12 col-sm-10">
+      <div (click)="goBack()" class="btn btn-dark shadow-sm my-3">Back</div>
+      <div class="row my-3">
+        <div class="d-flex flex-row justify-content-between">
+          <div>
+            <img
+              style="
+                width: 30px;
+                height: 30px;
+                object-fit: cover;
+                border-radius: 15px;
+                margin-right: 10px;
+              "
+              [src]="blog.user.profile.url"
+              alt=""
+            />
+            {{ blog.user.name }}
+          </div>
+          <div class="text-muted">{{ blog.createdAt | timeSince }}</div>
+        </div>
+      </div>
+      <div class="row">
+        <h1 class="display-5 mb-3 fw-semibold">{{ blog.title }}</h1>
+      </div>
+      <div class="row">
+        <img
+          style="width: 100%; object-fit: cover; height: 40vh"
+          [src]="blog.cover_image.url"
+          alt=""
+        />
+      </div>
+      <div class="row my-4 body">
+        <div [innerHTML]="blog.body"></div>
+      </div>
+      <div>
+        <app-comment-form [blogSlug]="blog.slug"></app-comment-form>
+      </div>
+      <div *ngIf="!commentsLoading && comments.length > 0" class="my-3">
+        <div *ngFor="let comment of comments" class="card my-3">
+          <div class="card-body">
+            <blockquote class="blockquote mb-0">
+              <p>{{ comment.body }}</p>
+              <footer style="font-size: 0.9rem" class="blockquote-footer">
+                {{ comment.user.name }} -
+                <cite>{{ comment.createdAt | timeSince }}</cite>
+              </footer>
+            </blockquote>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loadingSpinner>
+    <app-loader></app-loader>
+  </ng-template>
+</div>

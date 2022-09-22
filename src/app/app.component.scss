@@ -1,0 +1,28 @@
+.floating-action {
+  position: fixed;
+  background-color: rgb(112, 44, 249);
+  bottom: 40px;
+  right: 40px;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  transition: 0.2s;
+  @media screen and (max-width: 500px) {
+    right: 20px;
+    bottom: 20px;
+  }
+}
+
+.floating-action:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.hide-action {
+  display: none;
+}

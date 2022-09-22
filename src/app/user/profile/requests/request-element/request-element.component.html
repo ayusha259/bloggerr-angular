@@ -1,0 +1,49 @@
+<div *ngIf="!approved" class="request-container shadow rounded p-2 my-3">
+  <div class="row">
+    <div class="element col-12">
+      <div [routerLink]="['/blogs', request.blog.slug]" class="image col-4">
+        <img [src]="request.blog.cover_image.url" alt="" />
+      </div>
+      <div class="content col-6">
+        <div [routerLink]="['/blogs']" class="body">
+          <h1>{{ request.blog.title }}</h1>
+        </div>
+        <div class="comment-user">
+          <div class="display-6" style="font-size: 1rem; font-weight: 600">
+            Comment by -
+            <span style="font-weight: 400">{{ request.user.name }}</span
+            ><br />
+            <span style="font-size: 0.6rem" class="text-muted">{{
+              request.createdAt | timeSince
+            }}</span>
+            <br />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr />
+  <div class="row">
+    <div class="comment col-12">
+      <h1 style="font-size: 1.2rem">Body</h1>
+      <p>
+        {{ request.body }}
+      </p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-end">
+      <button (click)="approveComment(request._id)" class="btn btn-success">
+        <div *ngIf="!approvingComment">Approve</div>
+        <div *ngIf="approvingComment" class="spinner-border spinner-border-sm">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </button>
+      <button class="btn btn-danger ms-3">Deny</button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="approved" class="alert alert-success">
+  <h4 class="alert-heading"><i class="fa-solid fa-check"></i> Approved!</h4>
+</div>

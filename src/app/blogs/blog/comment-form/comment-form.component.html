@@ -1,0 +1,36 @@
+<hr />
+<h1 class="display-6">Comments</h1>
+<div class="py-3">
+  <div *ngIf="isAllowed">
+    <div *ngIf="showApprove" class="alert alert-success">
+      <i class="fa-solid fa-check"></i>
+      Comment request has been sent to the author of this blog. Once approved
+      your comment will be visible.
+    </div>
+    <form class="col-lg-6" #form="ngForm" (submit)="onSubmit()">
+      <div class="form-group">
+        <textarea
+          appTextArea
+          type="text"
+          id="body"
+          class="form-control"
+          placeholder="Write a comment..."
+          name="body"
+          ngModel
+          required
+        ></textarea>
+      </div>
+      <div class="mt-3 text-end">
+        <button [disabled]="form.invalid" class="btn btn-primary">
+          <div *ngIf="!postingComment">Post</div>
+          <div *ngIf="postingComment" class="spinner-border spinner-border-sm">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="!isAllowed" class="alert alert-warning">
+    <a class="login-link" (click)="handleClick()">Log In</a> to post a comment
+  </div>
+</div>

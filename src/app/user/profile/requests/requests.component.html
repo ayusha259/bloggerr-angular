@@ -1,0 +1,15 @@
+<div *ngIf="!loading; else loadingSpinner">
+  <h1 style="font-size: 2rem" class="display-6">Comment Requests</h1>
+  <div *ngIf="requests.length !== 0; else noRequest">
+    <app-request-element *ngFor="let request of requests" [request]="request">
+    </app-request-element>
+  </div>
+</div>
+
+<ng-template #noRequest>
+  <p class="lead">No Request pending</p>
+</ng-template>
+
+<ng-template #loadingSpinner>
+  <app-loader></app-loader>
+</ng-template>

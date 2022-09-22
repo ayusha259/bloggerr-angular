@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div *ngIf="!loading; else loadingSpinner" class="col-12 col-lg-8">
+      <h1 class="display-6">All Blogs</h1>
+      <div class="row justify-content-center">
+        <div *ngFor="let blog of blogList">
+          <app-blog-element [blog]="blog"></app-blog-element>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <ng-template #loadingSpinner>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</ng-template> -->
+
+<ng-template #loadingSpinner>
+  <app-loader></app-loader>
+</ng-template>

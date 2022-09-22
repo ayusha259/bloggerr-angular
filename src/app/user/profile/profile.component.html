@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-8">
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a
+            routerLink="/user/profile/info"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+            >User</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            routerLink="/user/profile/requests"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            class="nav-link"
+          >
+            Requests</a
+          >
+        </li>
+      </ul>
+      <div><router-outlet></router-outlet></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="element col-12">
+  <div [routerLink]="['/blogs', blog.slug]" class="image col-4">
+    <img [src]="blog.cover_image.url" alt="" />
+  </div>
+  <div class="content col-8">
+    <div [routerLink]="['/blogs', blog.slug]" class="body">
+      <h1>{{ blog.title }}</h1>
+    </div>
+    <div class="footer">
+      <div class="footer-user">
+        <span class="text-muted">{{ blog.user.name }}</span>
+        <span style="font-size: 0.6rem" class="text-muted">{{
+          blog.createdAt | timeSince
+        }}</span>
+      </div>
+      <button
+        *ngIf="isLoggedIn"
+        (click)="handleSave()"
+        style="cursor: pointer"
+        class="like"
+      >
+        <i *ngIf="!saved" class="fa-regular fa-bookmark"></i>
+        <i *ngIf="saved" class="fa-solid fa-bookmark"></i>
+      </button>
+    </div>
+  </div>
+</div>

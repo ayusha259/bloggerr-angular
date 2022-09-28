@@ -8,7 +8,7 @@ import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'auth',
     component: AuthComponent,
     canActivate: [LoginGuard],
     children: [

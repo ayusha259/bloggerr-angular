@@ -10,15 +10,25 @@ import { Request } from '../requests.component';
 export class RequestElementComponent {
   @Input('request') request: Request;
   approvingComment: boolean = false;
+  decliningComment: boolean = false;
   approved: boolean = false;
+  denied: boolean = false;
   constructor(private http: HttpClient) {}
 
-  approveComment(id: string) {
-    this.approvingComment = true;
-    this.http.put(`blogs/comments/approve/${id}`, {}).subscribe((res) => {
-      this.approvingComment = false;
-      this.approved = true;
-      console.log(res);
+  approveComment(id: string, type: 'approve' | 'deny') {
+    if (type === 'approve') {
+      this.approvingComment = true;
+    } else if (type === 'deny') {
+      this.decliningComment = true;
+    }
+    this.http.put(`blogs/comments/${type}/${id}`, {}).subscribe((res) => {
+      if (type === 'approve') {
+        this.approvingComment = false;
+        this.approved = true;
+      } else if (type === 'deny') {
+        this.decliningComment = false;
+        this.denied = true;
+      }
     });
   }
 }

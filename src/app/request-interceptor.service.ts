@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth/auth.service';
 
-const URL = 'https://api-bloggerr.herokuapp.com/api/';
+const URL = 'https://bloggerr-api.onrender.com/api/';
 // const URL = 'http://localhost:8000/api/';
 
 @Injectable()

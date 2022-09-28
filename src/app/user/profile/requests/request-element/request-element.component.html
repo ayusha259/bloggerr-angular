@@ -1,4 +1,7 @@
-<div *ngIf="!approved" class="request-container shadow rounded p-2 my-3">
+<div
+  *ngIf="!approved && !denied"
+  class="request-container shadow rounded p-2 my-3"
+>
   <div class="row">
     <div class="element col-12">
       <div [routerLink]="['/blogs', request.blog.slug]" class="image col-4">
@@ -33,17 +36,32 @@
   </div>
   <div class="row">
     <div class="col text-end">
-      <button (click)="approveComment(request._id)" class="btn btn-success">
+      <button
+        (click)="approveComment(request._id, 'approve')"
+        class="btn btn-success"
+      >
         <div *ngIf="!approvingComment">Approve</div>
         <div *ngIf="approvingComment" class="spinner-border spinner-border-sm">
           <span class="visually-hidden">Loading...</span>
         </div>
       </button>
-      <button class="btn btn-danger ms-3">Deny</button>
+      <button
+        (click)="approveComment(request._id, 'deny')"
+        class="btn btn-danger ms-3"
+      >
+        <div *ngIf="!decliningComment">Deny</div>
+        <div *ngIf="decliningComment" class="spinner-border spinner-border-sm">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </button>
     </div>
   </div>
 </div>
 
 <div *ngIf="approved" class="alert alert-success">
   <h4 class="alert-heading"><i class="fa-solid fa-check"></i> Approved!</h4>
+</div>
+
+<div *ngIf="denied" class="alert alert-danger">
+  <h4 class="alert-heading"><i class="fa-solid fa-xmark"></i> Denied!</h4>
 </div>

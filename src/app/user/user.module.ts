@@ -11,6 +11,7 @@ import { RequestsComponent } from './profile/requests/requests.component';
 import { SavedComponent } from './saved/saved.component';
 import { UserBlogsComponent } from './user-blogs/user-blogs.component';
 import { UserComponent } from './user.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,6 @@ import { UserComponent } from './user.component';
     RequestElementComponent,
     ProfileComponent,
   ],
-  imports: [SharedModule, UserRoutingModule, BlogsModule],
+  imports: [SharedModule, UserRoutingModule, BlogsModule, FormsModule],
 })
 export class UserModule {}

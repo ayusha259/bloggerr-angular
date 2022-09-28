@@ -11,6 +11,7 @@ import { BlogComponent } from './blog/blog.component';
 import { CommentFormComponent } from './blog/comment-form/comment-form.component';
 import { BlogsContainerComponent } from './blogs-container.component';
 import { EditorComponent } from './editor/editor.component';
+import { HeroComponent } from './hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { EditorComponent } from './editor/editor.component';
     BlogListComponent,
     BlogElementComponent,
     CommentFormComponent,
+    HeroComponent,
   ],
   imports: [
     SharedModule,
